@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: ems-api
+    build:
+      context: .
+      dockerfile: DockerFile
+    # volumes:
+    #   - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - MYSQL_DATABASE=db_ems
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    depends_on:
+      - api_db
+
+  api_db:
+    container_name: ems-api-db
+    image: mysql
+    restart: always
+    environment:
+      - MYSQL_DATABASE=db_ems
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - .dbdata:/var/lib/mysql
