@@ -39,7 +39,7 @@ class UserRoleRetriveUpdateDelete(generics.RetrieveUpdateDestroyAPIView, mixins.
 
     def retrieve(self, request, *args, **kwargs):
         if self.get_queryset().exists():
-            queryset = self.get_queryset()
+            queryset = UserRole.objects.get(pk=self.kwargs['pk'])
             serializer = UserRolesSerializer(queryset)
             return Response({
                 'data': serializer.data
