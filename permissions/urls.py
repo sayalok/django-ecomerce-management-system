@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import PermissionListCreateView
+from .views import PermissionListView
 
 urlpatterns = [
-    path('permissions', PermissionListCreateView.as_view()),
+    path('permissions', PermissionListView.as_view()),
 ]

@@ -6,8 +6,7 @@ from .models import Permissions
 from .serializers import PermissionsSerializer
 
 
-class PermissionListCreateView(generics.ListCreateAPIView):
-    # queryset = Permissions.objects.all()
+class PermissionListView(generics.ListAPIView):
     serializer_class = PermissionsSerializer
 
     def get(self,request):
